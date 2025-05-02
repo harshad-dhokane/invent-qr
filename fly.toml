@@ -1,20 +1,37 @@
-# fly.toml app configuration file generated for qr-webapp on 2025-05-01T12:36:07Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+app = "invent-qr"
+primary_region = "bom"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+swap_size_mb = 512
+[[vm]]
+  size = "shared-cpu-1x"
 
-app = 'qr-webapp'
-primary_region = 'bom'
+[experimental]
+auto_rollback = true
 
-[build]
+[deploy]
+strategy = "rolling"
+
+[env]
+NODE_ENV = "production"
+PORT = "8080"
+
+[[services.ports]]
+handlers = ["http"]
+port = 80
+force_https = true
+
+[[services.ports]]
+handlers = ["tls", "http"]
+port = 443
 
 [http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+internal_port = 8080
+force_https = true
+auto_stop_machines = "stop"
+auto_start_machines = true
+min_machines_running = 1
+processes = ["app"]
 
 [[vm]]
   memory = '1gb'
