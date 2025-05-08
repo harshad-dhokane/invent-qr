@@ -1,4 +1,4 @@
-app = "invent-qr"
+app = "qr-inventory"
 primary_region = "bom"
 kill_signal = "SIGINT"
 kill_timeout = "5s"
