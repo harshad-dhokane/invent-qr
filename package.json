@@ -21,7 +21,7 @@
     "setup": "prisma generate && prisma migrate deploy",
     "reset:db": "prisma migrate reset",
     "reset:db:staging": "dotenv -e .env.staging -- prisma migrate reset",
-    "start": "NODE_ENV=production node ./server-start.js",
+    "start": "NODE_ENV=production node ./build/server/index.js",
     "start:ci": "dotenv -- npm run start",
     "test": "vitest",
     "test:cov": "vitest --coverage",
