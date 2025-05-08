@@ -21,7 +21,7 @@
     "setup": "prisma generate && prisma migrate deploy",
     "reset:db": "prisma migrate reset",
     "reset:db:staging": "dotenv -e .env.staging -- prisma migrate reset",
-    "start": "NODE_ENV=production node ./build/server/index.js",
+    "start": "NODE_ENV=production node ./server-start.js",
     "start:ci": "dotenv -- npm run start",
     "test": "vitest",
     "test:cov": "vitest --coverage",
@@ -34,7 +34,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format-code": "npm run prettier:fix & npm run lint:fix",
     "stripe:webhook": "stripe listen --forward-to localhost:3000/api/stripe-webhook",
-    "prepare": "husky install",
+    "prepare": "husky",
     "precommit": "npm run db:generate-type && npm run lint:fix && npm run format && npm run typecheck"
   },
   "overrides": {
@@ -155,7 +155,7 @@
     "eslint-plugin-no-restricted-imports": "^0.0.0",
     "eslint-plugin-tailwindcss": "^3.14.2",
     "happy-dom": "^15.11.0",
-    "husky": "^9.0.11",
+    "husky": "^9.1.7",
     "msw": "^1.2.0",
     "nodemailer-mock": "^2.0.4",
     "npm-run-all": "^4.1.5",
